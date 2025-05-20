@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../models/categoria.dart';
 import '../models/servicio.dart';
 import '../models/proveedor.dart';
-import '../services/categoria_service.dart';
 import '../services/servicio_service.dart';
 import '../services/proveedor_service.dart';
 
@@ -18,11 +17,12 @@ class CategoriaScreen extends StatefulWidget {
   State<CategoriaScreen> createState() => _CategoriaScreenState();
 }
 
-class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProviderStateMixin {
+class _CategoriaScreenState extends State<CategoriaScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ServicioService _servicioService = ServicioService();
   final ProveedorService _proveedorService = ProveedorService();
-  
+
   List<Servicio> _servicios = [];
   List<Proveedor> _proveedores = [];
   bool _isLoading = true;
@@ -49,10 +49,10 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
       // En una implementación real, cargaríamos los datos desde Firebase
       // final servicios = await _servicioService.getServiciosByCategoria(widget.categoria.id);
       // final proveedores = await _proveedorService.getProveedoresByCategoria(widget.categoria.id);
-      
+
       // Por ahora, usamos datos de ejemplo
       await Future.delayed(const Duration(seconds: 1));
-      
+
       setState(() {
         _servicios = [];
         _proveedores = [];
@@ -195,7 +195,8 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                       child: Row(
                                         children: [
                                           ClipRRect(
-                                            borderRadius: const BorderRadius.only(
+                                            borderRadius:
+                                                const BorderRadius.only(
                                               topLeft: Radius.circular(10),
                                               bottomLeft: Radius.circular(10),
                                             ),
@@ -210,13 +211,15 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                             child: Padding(
                                               padding: const EdgeInsets.all(15),
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     servicio.nombre,
                                                     style: const TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: Colors.black87,
                                                     ),
                                                   ),
@@ -228,14 +231,16 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                                       color: Colors.grey[600],
                                                     ),
                                                     maxLines: 2,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                   const SizedBox(height: 10),
                                                   Text(
                                                     '\$${servicio.precio.toStringAsFixed(2)}',
                                                     style: const TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: Color(0xFF2E7D32),
                                                     ),
                                                   ),
@@ -283,18 +288,21 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                           children: [
                                             CircleAvatar(
                                               radius: 35,
-                                              backgroundImage: AssetImage(proveedor.foto),
+                                              backgroundImage:
+                                                  AssetImage(proveedor.foto),
                                             ),
                                             const SizedBox(width: 15),
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     proveedor.nombre,
                                                     style: const TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: Colors.black87,
                                                     ),
                                                   ),
@@ -316,9 +324,11 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                                       ),
                                                       const SizedBox(width: 5),
                                                       Text(
-                                                        proveedor.calificacion.toString(),
+                                                        proveedor.calificacion
+                                                            .toString(),
                                                         style: const TextStyle(
-                                                          fontWeight: FontWeight.bold,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           color: Colors.amber,
                                                         ),
                                                       ),
@@ -326,7 +336,8 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                                         ' (${proveedor.numCalificaciones})',
                                                         style: TextStyle(
                                                           fontSize: 12,
-                                                          color: Colors.grey[600],
+                                                          color:
+                                                              Colors.grey[600],
                                                         ),
                                                       ),
                                                     ],
@@ -335,13 +346,15 @@ class _CategoriaScreenState extends State<CategoriaScreen> with SingleTickerProv
                                               ),
                                             ),
                                             Container(
-                                              padding: const EdgeInsets.symmetric(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
                                                 horizontal: 10,
                                                 vertical: 5,
                                               ),
                                               decoration: BoxDecoration(
                                                 color: const Color(0xFFE8F5E9),
-                                                borderRadius: BorderRadius.circular(15),
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
                                               ),
                                               child: Text(
                                                 '${proveedor.distancia} km',

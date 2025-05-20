@@ -52,7 +52,8 @@ class ServicioService {
   // Obtener un servicio por ID
   Future<Servicio?> getServicioById(String servicioId) async {
     try {
-      final doc = await _firestore.collection('servicios').doc(servicioId).get();
+      final doc =
+          await _firestore.collection('servicios').doc(servicioId).get();
       if (!doc.exists) {
         return null;
       }
